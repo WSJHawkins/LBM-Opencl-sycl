@@ -1,5 +1,5 @@
 CC = clang++
-CFLAGS = -O3 -std=c++11 -lOpenCL -fsycl
+CFLAGS = -O3 -std=c++11 -lOpenCL -fsycl --gcc-toolchain=/nfs/software/x86_64/gcc/7.4.0
 TARGET = d2q9-bgk
 
 all: $(TARGET)
