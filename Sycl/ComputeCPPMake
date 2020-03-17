@@ -1,0 +1,18 @@
+SRC=d2q9-bgk.cpp
+EXE=d2q9-bgk
+COMPUTECPP_FLAGS = $(shell $(COMPUTECPP_PACKAGE_ROOT_DIR)/bin/computecpp_info --dump-device-compiler-flags)
+EXTRA_FLAGS=
+
+#lComputeCpp
+computecpp:  d2q9-bgk.o d2q9-bgk.sycl
+	$(CXX) -O3 -std=c++11 -DSYCL d2q9-bgk.o $(EXTRA_FLAGS) -L$(COMPUTECPP_PACKAGE_ROOT_DIR)/lib -lComputeCpp -lOpenCL -Wl,--rpath=$(COMPUTECPP_PACKAGE_ROOT_DIR)/lib/ -o $(EXE)
+
+d2q9-bgk.o: d2q9-bgk.cpp d2q9-bgk.sycl
+	$(CXX) -O3 -std=c++11 -DSYCL d2q9-bgk.cpp -c -I$(COMPUTECPP_PACKAGE_ROOT_DIR)/include -include d2q9-bgk.sycl $(EXTRA_FLAGS) -o $@
+
+d2q9-bgk.sycl: d2q9-bgk.cpp
+	$(COMPUTECPP_PACKAGE_ROOT_DIR)/bin/compute++ -DSYCL d2q9-bgk.cpp $(COMPUTECPP_FLAGS) -c -I$(COMPUTECPP_PACKAGE_ROOT_DIR)/include -o $@
+
+.PHONY: clean
+clean:
+	rm -f d2q9-bgk-stream d2q9-bgk.sycl d2q9-bgk.o
