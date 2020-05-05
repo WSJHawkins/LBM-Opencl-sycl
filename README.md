@@ -12,3 +12,6 @@ changing the platform and architecture where appropriate.
 After compiling using the given makefile run the code using the following command:  
 ``` ./d2q9-bgk Inputs/input_128x128.params Obstacles/obstacles_128x128.dat ```  
 The 128x128 can be changed to 256x256 or 1024x1024 to see how it performs at different scales.
+
+This repository has been superceeded by: https://github.com/WSJHawkins/ExploringSycl
+Any updates to the code will be placed there.
