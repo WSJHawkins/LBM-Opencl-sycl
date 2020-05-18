@@ -1,4 +1,4 @@
-***This repository has been superceeded by: https://github.com/WSJHawkins/ExploringSycl
+***This repository has been superceeded by: https://github.com/WSJHawkins/ExploringSycl.
 Any updates to the code will be placed there.***
 
 # LBM-Opencl-sycl
